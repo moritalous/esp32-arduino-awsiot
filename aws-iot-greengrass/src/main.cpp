@@ -34,7 +34,7 @@ int count = 0;
 void enterDeepSleep()
 {
   Serial.println("enter deepSleep");
-  esp_sleep_enable_timer_wakeup(10 * 1000 * 1000);
+  esp_sleep_enable_timer_wakeup(1 * 1000 * 1000);
   esp_deep_sleep_start();
 }
 
@@ -92,8 +92,8 @@ void setup()
   }
 
   myTwoWire.begin(I2C_SDA, I2C_SCL, 100000);
-  pinMode(I2C_SDA, INPUT);
-  pinMode(I2C_SCL, INPUT);
+  pinMode(I2C_SDA, INPUT_PULLUP);
+  pinMode(I2C_SCL, INPUT_PULLUP);
 
   am2320 = Adafruit_AM2320(&myTwoWire, -1, -1);
   am2320.begin();
